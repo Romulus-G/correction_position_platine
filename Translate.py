@@ -43,8 +43,8 @@ def locate_cross(im, visualization=None):
 def get_ref_rect(im, mi, Mi, mj, Mj):
     Delta_i, Delta_j = Mi - mi, Mj - mj
 
-    # valeurs d'agrandissement tout à fait empiriques, basées sur le fait que la bouding box approximative 
-    # set trouve être une très bonne approximation en pratique (avec les paramètres utilisées plus hauts)
+    # valeurs d'agrandissement tout à fait empiriques, basées sur le fait que la bounding box approximative 
+    # se trouve être une très bonne approximation en pratique (avec les paramètres utilisées plus hauts)
     height = Delta_i + Delta_i//3      # hauteur
     width  = Delta_j + Delta_j//3      # largeur
 
