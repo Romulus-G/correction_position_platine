@@ -89,7 +89,7 @@ def optimal_translation(to_compare_ref_rect, height, width, top, left, im, visua
             # matrice "comparable"
             to_compare = black_pixels_mask - white_pixels_mask
 
-            # calcul de la distance associée à la norme 1 entre les deux matrices
+            # calcul de la distance entre les deux matrices (choix de la norme 1 pour comparer des matrices de 1, 0 et -1)
             diff = abs(to_compare_ref_rect - to_compare)            
             dist = diff.sum()
 
@@ -99,7 +99,7 @@ def optimal_translation(to_compare_ref_rect, height, width, top, left, im, visua
                 best_left = new_left
 
                 if visualization:
-                    ax[0,2].cla() ; ax[0,2].set_title(f"Best so far : {i},{j}") ; ax[0,2].imshow(diff) ; ax[0,2].draw(renderer) ; plt.pause(0.05)
+                    ax[0,2].cla() ; ax[0,2].set_title(f"Meilleur perturbation jusqu'à présent : {i},{j}") ; ax[0,2].imshow(diff) ; ax[0,2].draw(renderer) ; plt.pause(0.05)
     
             if visualization:
                 ax[1,2].cla() ; ax[1,2].set_title(f"{i},{j}") ; ax[1,2].imshow(diff) ; ax[1,2].draw(renderer) ; plt.pause(0.05)
