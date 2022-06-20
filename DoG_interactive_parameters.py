@@ -10,9 +10,9 @@ import cv2 as cv
 from matplotlib.widgets import Slider
 
 
-# Difference of Gaussians : 
-# - faire la différence de deux flous gaussiens (flou gaussien = convolution de l'image avec une gaussienne en 2D)
-# - appliquer un flou gaussien sur le résultat (la différence)
+# Difference of Gaussians = filtre à appliquer à une image :
+# - faire la différence de deux flous gaussiens appliqués à l'image (flou gaussien = convolution de l'image avec une gaussienne en 2D)
+# - appliquer un flou gaussien sur le résultat (la différence) pour éliminer un peu de bruit
 # - faire un masque pour prendre que les valeurs assez hautes (assez proches du max de l'image)
 
 
