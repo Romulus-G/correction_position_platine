@@ -6,8 +6,11 @@ import cv2
 # A partir de ces points clé sur les deux images et leurs descripteurs, il est possible de trouver des correspondances sur les deux images. 
 
 # read images
-img1 = cv2.imread('SE2.tif')  
-img2 = cv2.imread('SE3.tif') 
+im_ref = 'SE2.tif'
+im_trans = 'SE3.tif'
+
+img1 = cv2.imread(im_ref)  
+img2 = cv2.imread(im_trans) 
 
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
@@ -28,7 +31,23 @@ img3 = cv2.drawMatches(img1, keypoints_1, img2, keypoints_2, matches[:50], img2,
 plt.imshow(img3),plt.show()
 
 # On récupère les paires de points associés sur les chaque image. 
-pairs = [[(keypoints_1[match.queryIdx].pt, keypoints_2[match.trainIdx].pt)] for match in matches]
-print(pairs)
+pairs = np.array([[keypoints_1[match.queryIdx].pt, keypoints_2[match.trainIdx].pt] for match in matches])
 
+# On récupère la translation en x et y pour chacun des points
+trans_mat = np.array([[pairs[i,1][0] - pairs[i,0][0], pairs[i,1][1] - pairs[i,0][1]] for i in range(len(pairs))])
 
+# On élimine les translations aberrantes, i.e celles qui sont trop éloignées de la moyenne. 
+avg_trans = np.average(trans_mat, axis = 0)
+std_trans = np.std(trans_mat, axis = 0) # écart-type
+
+non_ab_trans_mat = []
+for i in range(len(trans_mat)):
+    if np.abs(avg_trans[0] - trans_mat[i, 0]) < std_trans[0]:
+        if np.abs(avg_trans[1] - trans_mat[i, 1]) < std_trans[1]:
+            non_ab_trans_mat.append(trans_mat[i])
+
+non_ab_trans_mat = np.array(non_ab_trans_mat)
+
+print(f"Image de référence : {im_ref}")
+print(f"Image translatée : {im_trans}")
+print(f"la translation optimale est {np.round(np.average(non_ab_trans_mat, axis = 0))}")
