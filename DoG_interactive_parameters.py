@@ -56,21 +56,21 @@ if __name__ == "__main__":
     im = [cv.imread(f"SE{i}.tif", cv.IMREAD_UNCHANGED) for i in range(1,6)]
 
     # init parameters--------------
-    kernel_shape = (9, 9)
-    sigma_inf = 19
-    sigma_diff = 1
+    kernel_shape = (23, 23)
+    sigma_inf = 58
+    sigma_diff = 2.7
     sigma_sup = sigma_inf + sigma_diff
     
-    last_blur_sigma = 5.5
+    last_blur_sigma = 3
 
-    tolerance_threshold = 17000
+    tolerance_threshold = 26000
     # -----------------------------
 
     mask1 = DoG(im[0], kernel_shape, sigma_inf, sigma_sup, (0,0), last_blur_sigma, tolerance_threshold)
-    mask2 = DoG(im[1], kernel_shape, sigma_inf, sigma_sup, (0,0), last_blur_sigma, tolerance_threshold)
+    mask2 = DoG(im[3], kernel_shape, sigma_inf, sigma_sup, (0,0), last_blur_sigma, tolerance_threshold)
 
     fig, ax = plt.subplots(1, 2, figsize=(11, 6))
-    fig.suptitle("Les paramètres initiaux nous semblent pas mal")
+    fig.suptitle("Cherche-t-on des points spéciaux de l'ordre du pixel ou des zones particulières plus grandes ?")
     fig.tight_layout()
     plot_im1 = ax[0].imshow(mask1)
     contours1, hierarchy1 = cv.findContours(mask1, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
