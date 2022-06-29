@@ -54,11 +54,7 @@ for i in range(len(trans_mat)):
             non_ab_trans_mat.append(trans_mat[i])
 non_ab_trans_mat = np.array(non_ab_trans_mat)
 
-plt.scatter(non_ab_trans_mat[:, 0], non_ab_trans_mat[:, 1], marker='x')
-plt.show()
-
-
-# On va utiliser une méthode de clustering pour trouver la translation optimale dans l'espace des translations en 2D
+# Clustering pour trouver la translation optimale dans l'espace des translations en 2D
 best_count = 0
 best_list = []
 opt_tr = np.zeros((2,))
@@ -74,6 +70,14 @@ for tr in non_ab_trans_mat:
         best_list = list
         opt_tr = tr
 best_list = np.array(best_list)
+
+fig, ax = plt.subplots()
+circle = plt.Circle(opt_tr, 10, fill = False, edgecolor = 'red')
+ax.add_patch(circle)
+ax.scatter(non_ab_trans_mat[:, 0], non_ab_trans_mat[:, 1], marker='x')
+ax.set_xlabel("Translation selon x")
+ax.set_ylabel("Translation selon y")
+plt.show()
 
 print(f"Image de référence : {im_ref}")
 print(f"Image translatée : {im_trans}")
