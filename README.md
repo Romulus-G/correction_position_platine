@@ -1,5 +1,5 @@
-- `registration.py` est un fichier contenant une seule fonction : `find_translation`. Celle ci prend en argument 2 images, l'image de référence et l'image à aligner et renvoie la translation (Tx,Ty) permettant de passer de l'une à l'autre:
-    $$ ref[x,y] = toTranslate[x-Tx,y-Ty] $$
+- `registration.py` est un fichier contenant une seule fonction : `find_translation`. Celle ci prend en argument 2 images, l'image de référence et l'image à aligner renvoie la translation $(T_x,T_y)$ permettant de passer de l'une à l'autre:
+    $$ ref[x,y] = toTranslate[x-T_x,y-T_y] $$
     où l'axe des x est horizontal dirigé vers la droite et l'axe des y est vertical dirigé vers le bas.
 
     Pour utliser `find_translation` dans un autre fichier : `from registration import find_translation` (`registration.py` doit être présent dans le répertoire dudit fichier)
