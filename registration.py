@@ -19,8 +19,9 @@ def find_translation(ref, toTranslate, filenames=True):
     """
     
     # read images
-    ref = cv.imread(ref, cv.IMREAD_GRAYSCALE)
-    toTranslate = cv.imread(toTranslate, cv.IMREAD_GRAYSCALE)
+    if filenames :
+        ref = cv.imread(ref, cv.IMREAD_GRAYSCALE)
+        toTranslate = cv.imread(toTranslate, cv.IMREAD_GRAYSCALE)
     
     # On applique un flou gaussien léger pour atténuer le bruit éventuel de l'image
     ref = cv.GaussianBlur(ref, [0,0], 1.5)
