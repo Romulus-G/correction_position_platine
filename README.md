@@ -1,10 +1,10 @@
 - `registration.py` est un fichier contenant une seule fonction : `find_translation`. Celle ci prend en argument 2 images, l'image de référence et l'image à aligner renvoie la translation $(T_x,T_y)$ permettant de passer de l'une à l'autre: <br> <br>
 
-$ref[x,y] = toTranslate[x-T_x,y-T_y]$
+    $ref[x,y] = toTranslate[x-T_x,y-T_y]$
     <br> <br>
     où l'axe des x est horizontal dirigé vers la droite et l'axe des y est vertical dirigé vers le bas.
 
-Pour utliser `find_translation` dans un autre fichier : `from registration import find_translation` (`registration.py` doit être présent dans le répertoire dudit fichier)
+    Pour utliser `find_translation` dans un autre fichier : `from registration import find_translation` (`registration.py` doit être présent dans le répertoire dudit fichier)
 
 - `Translate.py` est notre première méthode pour trouver la translation entre deux images. Elle se base sur la détection du motif noir en forme de croix.
 
