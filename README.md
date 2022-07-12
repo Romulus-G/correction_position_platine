@@ -4,7 +4,7 @@ $ref[x,y] = toTranslate[x-T_x,y-T_y]$
     <br> <br>
     où l'axe des x est horizontal dirigé vers la droite et l'axe des y est vertical dirigé vers le bas.
 
-    Pour utliser `find_translation` dans un autre fichier : `from registration import find_translation` (`registration.py` doit être présent dans le répertoire dudit fichier)
+Pour utliser `find_translation` dans un autre fichier : `from registration import find_translation` (`registration.py` doit être présent dans le répertoire dudit fichier)
 
 - `Translate.py` est notre première méthode pour trouver la translation entre deux images. Elle se base sur la détection du motif noir en forme de croix.
 
